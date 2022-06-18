@@ -40,7 +40,7 @@ python3 payloadGenerator.py -i IP ADDRESS -p PORT
 
 `-py True` is optional, which only creates a python reverse shell script.
 ```
-python3 payloadGenerator.py -i IP Address -p port -i IP Address -p port -py True
+python3 payloadGenerator.py -i IP Address -p PORT -py True
 ```
 
 
