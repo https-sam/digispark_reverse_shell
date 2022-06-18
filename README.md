@@ -1,6 +1,6 @@
 ## Digispark reverse shell
 
-The scripts creates either reverse shell python script or arduino sketch for digispark. The script is compatible with metasploit.</br>
+The script creates either reverse shell python script or arduino sketch for digispark. The script is compatible with metasploit.</br>
 This Digispark sketch is intended to run on OS X operating System.
 
 ## What is digispark?
