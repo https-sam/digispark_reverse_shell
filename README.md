@@ -1,6 +1,10 @@
 ## Digispark reverse shell
 
-The scripts creates either reverse shell python script or arduino sketch for digispark. The script is compatible with metasploit.
+The scripts creates either reverse shell python script or arduino sketch for digispark. The script is compatible with metasploit.</br>
+This Digispark sketch is intended to run on OS X operating System.
+
+## What is digispark?
+Digispark is a Attiny85 based microcontroller
 
 ## Features
 
@@ -22,7 +26,7 @@ Once the link is added, head over to Tools > Bord > Boards Manager, search for "
 
 Clone this repository
 ``` 
-git clone https://www.
+git clone https://github.com/https-sam/digispark_reverse_shell.git
 ```
 
 ```
@@ -31,7 +35,7 @@ cd scripts
 
 `-p and -i tags` are required.
 ```
-python3 payloadGenerator.py -i IP Address -p port
+python3 payloadGenerator.py -i IP ADDRESS -p PORT
 ```
 
 `-py True` is optional, which only creates a python reverse shell script.
