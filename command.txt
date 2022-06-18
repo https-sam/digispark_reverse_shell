@@ -1,2 +1,0 @@
-'~/.arduino15/packages/digistump/tools/micronucleus/2.0a4/launcher -cdigispark  --timeout 60 -Uflash:w:micronucleus-1.11-entry-jumper-pb0-upgrade.hex:i'
-
