@@ -49,7 +49,7 @@ else: #generate Arduino sketch
   INITIAL_DELAY = 1000
   PAYLOAD_BYTES = payload.encode("ascii")
   ENCODED_BYTES = base64.b64encode(PAYLOAD_BYTES)
-  ENCODED_PAYLOAD = ENCODED_BYTES.decode("ascii") #encoded payload to be loaded in Ardiono file
+  ENCODED_PAYLOAD = ENCODED_BYTES.decode("ascii") #Encoded payload to be loaded in Ardiono file
   WHOLE_LINE = f"\"python3 -c \\\"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\\\"\""
   #split lines ni 6
   lines = math.floor(len(WHOLE_LINE) / 6)
