@@ -65,6 +65,6 @@ MIT
 
 - [Digistump](https://github.com/digistump/DigisparkArduinoIntegration/blob/master/libraries/DigisparkKeyboard/DigiKeyboard.h) - Library for digispark
 - [Micronucleus](https://github.com/micronucleus/micronucleus) - processor
-
+- [Metasploit](https://github.com/rapid7/metasploit-framework) 
 
 
