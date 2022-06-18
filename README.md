@@ -46,7 +46,7 @@ python3 payloadGenerator.py -i IP Address -p port -i IP Address -p port -py True
 
 ## Set up
 
-Metsplit can be used as a listener
+Metsploit can be used as a listener
 ``` 
 msfconsole
 use multi/handler
