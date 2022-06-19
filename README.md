@@ -1,11 +1,13 @@
 ![Build Status](https://github.com/subsurface/subsurface/workflows/Mac/badge.svg)
+
+## What is digispark?
+Digispark is a Attiny85 based microcontroller that can be used as trusted HID-MIDI device. This project addresses its vulnerbility, which injects malicious code into the machine. 
+
 ## Digispark reverse shell
 
 The script creates either reverse shell python script or arduino sketch for digispark. The script is compatible with metasploit.</br>
 This Digispark sketch is intended to run on OS X operating System.
 
-## What is digispark?
-Digispark is a Attiny85 based microcontroller that can be used as trusted HID-MIDI device. This project addresses its vulnerbility, which injects malicious code into the machine. 
 
 ## Features
 
