@@ -1,3 +1,4 @@
+![Build Status](https://github.com/subsurface/subsurface/workflows/Mac/badge.svg)
 ## Digispark reverse shell
 
 The script creates either reverse shell python script or arduino sketch for digispark. The script is compatible with metasploit.</br>
