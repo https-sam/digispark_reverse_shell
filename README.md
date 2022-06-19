@@ -14,7 +14,7 @@ Digispark is a Attiny85 based microcontroller that can be used as trusted HID-MI
 
 ## Arduino Configuration
 
-To flash the digispark module, you need to add this link to your boards maneger</br>
+To flash the microcontroller, you need to add this link to your boards maneger</br>
 Arduino > File > Preferences > Additional Boards Manager URLs:
 ```
 https://raw.githubusercontent.com/digistump/arduino-boards-index/master/package_digistump_index.json
