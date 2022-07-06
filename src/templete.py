@@ -1,4 +1,4 @@
-import socket,zlib,base64,struct,time
+import socket, zlib, base64, struct, time
 IP_ADDRESS = "0.0.0.0"
 PORT = 8080
 
