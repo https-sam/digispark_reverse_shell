@@ -17,7 +17,7 @@ This Digispark sketch is intended to run on OS X operating System.
 ## Arduino Configuration
 
 To flash the microcontroller, you need to add this link to your boards maneger</br>
-Arduino > File > Preferences > Additional Boards Manager URLs:
+Arduino > File > Preferences > Additional Boards Manager URLs: 
 ```
 https://raw.githubusercontent.com/digistump/arduino-boards-index/master/package_digistump_index.json
 ```
