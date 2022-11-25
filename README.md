@@ -1,4 +1,4 @@
-![Build Status](https://github.com/subsurface/subsurface/workflows/Mac/badge.svg)
+
 
 ## What is digispark?
 Digispark is a Attiny85 based microcontroller that can be used as a trusted HID-MIDI device. This project addresses its vulnerability, which injects malicious code into the machine. 
